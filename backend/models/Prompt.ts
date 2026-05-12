@@ -1,5 +1,12 @@
 import mongoose, { Schema } from 'mongoose';
-
+export interface IPrompt extends mongoose.Document {
+  user_id: mongoose.Types.ObjectId;
+  category_id: mongoose.Types.ObjectId;
+  sub_category_id: mongoose.Types.ObjectId;
+  prompt: string;
+  response: string;
+  created_at: Date;
+}
 const PromptSchema = new Schema({
   user_id: { 
     type: Schema.Types.ObjectId, 
@@ -27,5 +34,4 @@ const PromptSchema = new Schema({
 }, { 
   timestamps: { createdAt: 'created_at', updatedAt: false } 
 });
-
-export default mongoose.model('Prompt', PromptSchema);
+export const Prompt = mongoose.model<IPrompt>('Prompt', PromptSchema);

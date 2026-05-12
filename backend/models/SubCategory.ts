@@ -1,4 +1,8 @@
 import mongoose from 'mongoose';
+export interface ISubCategory extends mongoose.Document {
+  name: string;
+  category: mongoose.Types.ObjectId; 
+}
 const SubCategorySchema = new mongoose.Schema({
   name: {
     type: String,
@@ -12,4 +16,4 @@ const SubCategorySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('SubCategory', SubCategorySchema);
+export const SubCategory = mongoose.model<ISubCategory>('SubCategory', SubCategorySchema);

@@ -1,4 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
+
+export interface IUser extends Document {
+  name: string;
+  phone: string;
+  role: 'user' | 'admin';
+}
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -8,8 +15,12 @@ const UserSchema = new mongoose.Schema({
   phone: {
     type: String,
     required: true,
-    unique: true 
-  }
+    unique: true
+  },role: {
+  type: String,
+  enum: ['user', 'admin'],
+  default: 'user'
+}
 });
 
-module.exports = mongoose.model('User', UserSchema);
+export const User = mongoose.model<IUser>('User', UserSchema);

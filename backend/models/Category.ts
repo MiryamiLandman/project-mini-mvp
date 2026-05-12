@@ -1,4 +1,8 @@
 import mongoose from 'mongoose';
+
+export interface ICategory extends Document {
+  name: string;
+}
 const CategorySchema = new mongoose.Schema({
   name: {
     type: String,
@@ -8,4 +12,4 @@ const CategorySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Category', CategorySchema);
+export const Category = mongoose.model<ICategory>('Category', CategorySchema);
