@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { getUserStats } from '../services/promptService';
-import HistoryList from '../components/HistoryList';
+import HistoryList from '../components/HistoryList/HistoryList';
 
 const HistoryPage = () => {
   const { user, token } = useAuth();

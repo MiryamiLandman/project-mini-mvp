@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { getAllPromptsAdmin } from '../services/promptService';
-import AdminUserTable from '../components/AdminUserTable';
+import AdminUserTable from '../components/AdminUserTable/AdminUserTable';
 
 const AdminPage = () => {
   const { token } = useAuth();

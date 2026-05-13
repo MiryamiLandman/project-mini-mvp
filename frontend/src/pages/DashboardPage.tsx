@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { getCategories, getSubCategories } from '../services/categoryService';
 import { generateLesson } from '../services/promptService';
-import CategorySelector from '../components/CategorySelector';
-import PromptForm from '../components/PromptForm';
-import LessonResponse from '../components/LessonResponse';
+import CategorySelector from '../components/CategorySelector/CategorySelector';
+import PromptForm from '../components/PromptForm/PromptForm';
+import LessonResponse from '../components/LessonResponse/LessonResponse';
 
 const DashboardPage = () => {
   const { user, token } = useAuth();
