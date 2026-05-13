@@ -22,7 +22,6 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.File({ 
-      // עכשיו __dirname יעבוד פה בצורה מושלמת!
       filename: path.join(logsDir, getLogFileName()),
       level: 'error'
     }),
