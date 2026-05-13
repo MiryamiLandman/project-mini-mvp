@@ -16,3 +16,12 @@ export const getSubCategories = async (categoryName: string, token: string) => {
   const response = await axios.get(`${SUB_API_URL}/${categoryName}`, authHeader(token));
   return response.data;
 };
+export const createCategoryAdmin = async (name: string, token: string) => {
+  const response = await axios.post(API_URL, { name }, authHeader(token));
+  return response.data;
+};
+
+export const createSubCategoryAdmin = async (name: string, categoryName: string, token: string) => {
+  const response = await axios.post(SUB_API_URL, { name, categoryName }, authHeader(token));
+  return response.data;
+};

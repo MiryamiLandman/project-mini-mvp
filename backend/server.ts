@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import logger from './Utils/logger';
 import { connectDB } from './config/ConnectDB';
 import { errorHandler } from './middleware/errorHandling';
 import categoryRoutes from './routes/CategoryRoute';
@@ -30,7 +31,7 @@ const startServer = async () => {
       console.log(`🔗 Waiting for you at: http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error('❌ שגיאה קריטית בהפעלת השרת:', error);
+    logger.error(`❌ שגיאה קריטית בהפעלת השרת: ${error}`);
     process.exit(1);
   }
 };

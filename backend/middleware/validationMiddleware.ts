@@ -44,9 +44,8 @@ export const validatePrompt = (req: Request, res: Response, next: NextFunction) 
 
 
 export const validateIdParam = (req: Request, res: Response, next: NextFunction) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+    const idToValidate = req.params.id || req.params.userId;
+  if (!mongoose.Types.ObjectId.isValid(idToValidate)) {
     return res.status(400).json({ message: 'פורמט מזהה (ID) לא תקין' });
   }
 
