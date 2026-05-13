@@ -10,7 +10,7 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
         if (!result) return next(new AppError('משתמש לא נמצא', 404));
         res.status(200).json(result);
     } catch (err) {
-        next(err);
+      next(err);
     }
 };
 

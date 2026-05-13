@@ -16,7 +16,8 @@ async function getUserByName(name: string): Promise<IUser | null> {
 }
 async function getAllUsers(): Promise<IUser[]> {
   return await User.find().exec();
-}(phone: string): Promise<{ token: string; user: IUser } | null> {
+}
+async function loginUser(phone: string): Promise<{ token: string; user: IUser } | null> {
   const user = await User.findOne({ phone }).exec();
   if (!user) return null;
   const token = jwt.sign(

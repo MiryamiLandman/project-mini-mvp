@@ -10,7 +10,7 @@ router.post('/login', userController.loginUser);
 
 router.get('/', protect, adminOnly, userController.getAllUsers);
 
-router.get('/:id', protect, adminOnly, validateIdParam, userController.getUserById);
+router.get('/:id', protect, validateIdParam, userController.getUserById);
 
 router.get('/name/:name', protect, adminOnly, userController.getUserByName);
 

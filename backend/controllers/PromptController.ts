@@ -2,11 +2,12 @@ import {Request, Response,NextFunction} from 'express';
 import * as prompyService from '../services/PrompyService';
 import { AppError } from '../Utils/AppError';
 
-export const generateLesson = async (req: Request, res: Response, next: NextFunction) => {
+export const generateLesson = async (req: any, res: Response, next: NextFunction) => {
     try {
-        const { userId, subCategoryId, userPrompt } = req.body;
-        if (!userId || !subCategoryId || !userPrompt) {
-            return next(new AppError('כל השדות (משתמש, תת-קטגוריה והנחיה) הם חובה', 400));
+        const { subCategoryId, userPrompt } = req.body;
+        const userId = req.user.id; // לוקח את ה-userId מהטוקן ולא מה-body
+        if (!subCategoryId || !userPrompt) {
+            return next(new AppError('כל השדות (תת-קטגוריה והנחיה) הם חובה', 400));
         }
         const lesson = await prompyService.createAIDrivenLesson(userId, subCategoryId, userPrompt);
         

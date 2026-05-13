@@ -48,7 +48,7 @@ async function createAIDrivenLesson(
     return await newPromptEntry.save();
 
   } catch (error) {
-    console.error("OpenAI Error:", error);
+    console.error("OpenAI Error:", JSON.stringify(error));
     throw new Error("נכשלה יצירת השיעור");
   }
 }
