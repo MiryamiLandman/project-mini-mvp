@@ -14,7 +14,7 @@ const RegisterPage = () => {
   const { login: authLogin } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); 
     setError('');
     setIsLoading(true);
@@ -40,13 +40,27 @@ const RegisterPage = () => {
         authLogin(result.user, result.token);
         navigate('/admin');
       }
-    } catch (err) {
-      setError('אירעה שגיאה, אנא נסה שנית');
+    } catch (err: any) {
+      if (err.response) {
+                if (err.response.status === 404 && mode !== 'register') {
+          setError('משתמש לא רשום, אנא הירשם');
+          setMode('register');
+        } 
+        
+        else if (err.response.data && err.response.data.message) {
+          setError(err.response.data.message);
+        } 
+                else {
+          setError('אירעה שגיאה מול השרת, אנא נסה שנית');
+        }
+        
+      } else {
+        setError('שגיאת תקשורת, לא ניתן להתחבר לשרת');
+      }
     } finally {
       setIsLoading(false);
     }
   };
-
   return (
     <div>
       <button onClick={() => setMode('login')}>כניסה</button>
