@@ -24,3 +24,7 @@ export const getAllPromptsAdmin = async (token: string) => {
   const response = await axios.get(`${API_URL}/admin/all`, authHeader(token));
   return response.data;
 };
+export const getMyPrompts = async (token: string) => {
+  const response = await axios.get(`${API_URL}/my-prompts`, authHeader(token));
+  return response.data;
+};

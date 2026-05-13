@@ -38,3 +38,13 @@ export const getUserLearningStats = async (req: Request, res: Response, next: Ne
         next(new AppError('שגיאה בטעינת סטטיסטיקות הלמידה', 500));
     }
 };
+
+export const getUserPrompts = async (req: any, res: any, next: NextFunction) => {
+  try {
+    const userId = req.user.id; 
+    const prompts = await prompyService.getUserPrompts(userId); 
+    res.json(prompts);
+  } catch (error) {
+    next(new AppError('שגיאה בשליפת השיעורים', 500));
+  }
+};

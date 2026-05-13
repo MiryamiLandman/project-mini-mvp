@@ -124,4 +124,11 @@ async function getUserStats(userId: string) {
     categoryBreakdown: categories
   };
 }
-export { createAIDrivenLesson, getPromptById, getAllPromptsAdmin, deletePrompt, getUserStats };
+async function getUserPrompts(userId: string): Promise<IPrompt[]> {
+  return await Prompt.find({ user_id: userId })
+    .populate('category_id', 'name')
+    .populate('sub_category_id', 'name')
+    .sort({ created_at: -1 })
+    .exec();
+}
+export { createAIDrivenLesson, getPromptById, getAllPromptsAdmin, deletePrompt, getUserStats, getUserPrompts };
