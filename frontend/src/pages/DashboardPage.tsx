@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getCategories, getSubCategories } from '../services/categoryService';
 import { generateLesson } from '../services/promptService';
@@ -7,7 +8,8 @@ import PromptForm from '../components/PromptForm/PromptForm';
 import LessonResponse from '../components/LessonResponse/LessonResponse';
 
 const DashboardPage = () => {
-  const { user, token } = useAuth();
+  const { user, token, logout } = useAuth();
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -56,6 +58,8 @@ const DashboardPage = () => {
   return (
     <div>
       <h1>שלום {user?.name}!</h1>
+      <button onClick={() => { logout(); navigate('/'); }}>התנתק</button>
+      <button onClick={() => navigate('/history')}>היסטוריית למידה</button>
       <CategorySelector
         categories={categories}
         subCategories={subCategories}

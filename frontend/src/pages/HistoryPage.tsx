@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getUserStats } from '../services/promptService';
 import HistoryList from '../components/HistoryList/HistoryList';
 
 const HistoryPage = () => {
-  const { user, token } = useAuth();
+  const { user, token, logout } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState<any>(null);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +25,8 @@ const HistoryPage = () => {
   return (
     <div>
       <h1>היסטוריית למידה</h1>
+      <button onClick={() => navigate('/dashboard')}>חזרה לדשבורד</button>
+      <button onClick={() => { logout(); navigate('/'); }}>התנתק</button>
       {stats && (
         <div>
           <p>סה"כ שיעורים: {stats.totalLessons}</p>
