@@ -10,3 +10,15 @@ Error: משתמש לא נמצא
 Error: משתמש לא נמצא
     at loginUser (C:\Users\This User\Desktop\project_practicom\ai-learning-platform\backend\controllers\UserController.ts:10:34)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2026-05-13 19:37:13] ERROR: [POST] /api/users/login - משתמש לא נמצא
+Error: משתמש לא נמצא
+    at loginUser (C:\Users\This User\Desktop\project_practicom\ai-learning-platform\backend\controllers\UserController.ts:10:34)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2026-05-13 19:37:22] ERROR: [POST] /api/users/login - משתמש לא נמצא
+Error: משתמש לא נמצא
+    at loginUser (C:\Users\This User\Desktop\project_practicom\ai-learning-platform\backend\controllers\UserController.ts:10:34)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2026-05-13 19:37:29] ERROR: [POST] /api/users/login - משתמש לא נמצא
+Error: משתמש לא נמצא
+    at loginUser (C:\Users\This User\Desktop\project_practicom\ai-learning-platform\backend\controllers\UserController.ts:10:34)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

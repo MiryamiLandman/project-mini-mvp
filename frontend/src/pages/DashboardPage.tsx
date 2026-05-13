@@ -57,9 +57,11 @@ const DashboardPage = () => {
   
 
   return (
-    <div>
-      <h1>שלום {user?.name}!</h1>
-      <button onClick={() => { logout(); navigate('/'); }}>התנתק</button>
+    <div className="page-container">
+      <div className="page-header">
+        <h1>שלום {user?.name}!</h1>
+        <button onClick={() => { logout(); navigate('/'); }}>התנתק</button>
+      </div>
       <button onClick={() => navigate('/history')}>היסטוריית למידה</button>
       <CategorySelector
         categories={categories}

@@ -27,25 +27,37 @@ const HistoryPage = () => {
     }
   }, [user, token]);
 
-  if (isLoading) return <div>טוען...</div>;
-  if (error) return <p>{error}</p>;
+  if (isLoading) return <div className="loading-state">טוען...</div>;
+  if (error) return <p className="error-message">{error}</p>;
 
   return (
-    <div>
+  <div className="page-container">
+    <header className="page-header">
       <h1>היסטוריית למידה</h1>
-      <button onClick={() => navigate('/dashboard')}>חזרה לדשבורד</button>
-      <button onClick={() => { logout(); navigate('/'); }}>התנתק</button>
-      
-      {stats && (
-        <div style={{ marginBottom: '20px' }}>
+      <div className="header-buttons">
+        <button className="secondary-btn" onClick={() => navigate('/dashboard')}>חזרה לדשבורד</button>
+        <button className="logout-btn" onClick={() => { logout(); navigate('/'); }}>התנתק</button>
+      </div>
+    </header>
+    
+    {stats && (
+      <section className="stats-overview card-container">
+        <div className="stat-box">
           <p>סה"כ שיעורים: <strong>{stats.totalLessons}</strong></p>
+        </div>
+        <div className="stat-box">
           <p>קטגוריה מועדפת: <strong>{stats.favoriteCategory}</strong></p>
         </div>
-      )}
+      </section>
+    )}
 
+    <div style={{ marginTop: '50px' }}></div>
+
+    <section className="history-details-bottom">
       <HistoryList stats={stats} allPrompts={prompts} />
-    </div>
-  );
+    </section>
+  </div>
+);
 };
 
 export default HistoryPage;

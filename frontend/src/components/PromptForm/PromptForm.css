@@ -1,28 +1,43 @@
+
+
+.category-selector select {
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius);
+  padding: 12px;
+  background-color: var(--white);
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .prompt-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%; 
 }
-
 .prompt-form textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: var(--radius); 
+  border: 2px solid #e2e8f0;
   font-size: 16px;
   resize: vertical;
+  width: 100%;
+  box-sizing: border-box; 
+  background: var(--white);
+  transition: border-color 0.3s;
 }
-
+.prompt-form textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
 .prompt-form button {
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  background-color: #4a90e2;
-  color: white;
-  font-size: 16px;
+  padding: 10px 20px;
+  align-self: center; 
   cursor: pointer;
-}
-
-.prompt-form button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
 }
