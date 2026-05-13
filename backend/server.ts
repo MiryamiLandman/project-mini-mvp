@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import { connectDB } from './Utils/ConnectDB';
+import { connectDB } from './config/ConnectDB';
 import { errorHandler } from './middleware/errorHandling';
 import categoryRoutes from './routes/CategoryRoute';
 import subCategoryRoutes from './routes/SubCategoryRoute';
@@ -10,11 +10,9 @@ import promptRoutes from './routes/PrompyRoute';
 
 const app = express();
 
-// Middlewares
-app.use(cors()); // מאפשר ל-Frontend לגשת לשרת
+app.use(cors()); 
 app.use(express.json());
 
-// Routes
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subCategoryRoutes);

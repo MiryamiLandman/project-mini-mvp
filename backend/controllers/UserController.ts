@@ -2,6 +2,18 @@ import { Request, Response, NextFunction } from 'express';
 import * as userService from '../services/UserService';
 import { AppError } from '../Utils/AppError';
 
+export const loginUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { phone } = req.body;
+        if (!phone) return next(new AppError('מספר טלפון הוא שדה חובה', 400));
+        const result = await userService.loginUser(phone);
+        if (!result) return next(new AppError('משתמש לא נמצא', 404));
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
 export const registerUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { name, phone } = req.body;

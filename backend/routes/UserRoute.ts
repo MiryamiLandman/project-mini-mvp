@@ -6,6 +6,7 @@ import { validateUser, validateIdParam } from '../middleware/validationMiddlewar
 const router = Router();
 
 router.post('/register', validateUser, userController.registerUser);
+router.post('/login', userController.loginUser);
 
 router.get('/', protect, adminOnly, userController.getAllUsers);
 

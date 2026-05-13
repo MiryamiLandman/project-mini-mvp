@@ -21,16 +21,16 @@ export const validateUser = (req: Request, res: Response, next: NextFunction) =>
 
 
 export const validatePrompt = (req: Request, res: Response, next: NextFunction) => {
-  const { sub_category_id, prompt } = req.body;
-  if (!sub_category_id || !prompt) {
+  const { subCategoryId, userPrompt } = req.body;
+  if (!subCategoryId || !userPrompt) {
     return res.status(400).json({ message: 'חסרים נתונים: יש לשלוח מזהה תת-קטגוריה ותוכן להנחיה' });
   }
 
-  if (!mongoose.Types.ObjectId.isValid(sub_category_id)) {
+  if (!mongoose.Types.ObjectId.isValid(subCategoryId)) {
     return res.status(400).json({ message: 'מזהה תת-קטגוריה אינו תקין' });
   }
 
-  const trimmedPrompt = prompt.trim();
+  const trimmedPrompt = userPrompt.trim();
   if (trimmedPrompt.length < 5) {
     return res.status(400).json({ message: 'ההנחיה קצרה מדי, אנא פרט יותר כדי לקבל תוצאה איכותית' });
   }
