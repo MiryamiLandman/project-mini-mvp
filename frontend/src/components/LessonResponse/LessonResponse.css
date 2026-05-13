@@ -1,0 +1,20 @@
+.lesson-response {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border-right: 5px solid var(--primary); /* עיטור יפה בצד */
+  margin-top: 25px;
+}
+
+.lesson-response h2 {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.lesson-response p {
+  color: #445566;
+  font-size: 18px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}

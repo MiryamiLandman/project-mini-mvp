@@ -1,0 +1,97 @@
+/* AdminPage.css */
+
+.header-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.stats-overview {
+    display: flex;
+    gap: 40px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.stat-box strong {
+    color: var(--primary);
+    margin-right: 8px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+.cat-name {
+    font-weight: 700;
+}
+
+.cat-count {
+    color: var(--text-muted);
+}
+
+.divider {
+    margin: 40px 0;
+    border: 0;
+    border-top: 2px solid #edf2f7;
+}
+
+.forms-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.admin-form-card {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: -10px;
+}
+
+.admin-form-card input, 
+.admin-form-card select {
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius);
+    font-size: 15px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    padding: 10px !important;
+}
+
+.secondary-btn {
+    background-color: #edf2f7;
+    color: var(--text-main);
+}
+
+.secondary-btn:hover {
+    background-color: #e2e8f0;
+}
+
+.logout-btn {
+    background-color: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #fed7d7;
+}
+
+.logout-btn:hover {
+    background-color: #feb2b2;
+}
