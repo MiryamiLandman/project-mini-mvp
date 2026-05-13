@@ -1,0 +1,4 @@
+[2026-05-13 18:25:51] ERROR: [POST] /api/prompts/generate - שגיאה ביצירת השיעור
+Error: שגיאה ביצירת השיעור
+    at generateLesson (C:\Users\This User\Desktop\project_practicom\ai-learning-platform\backend\controllers\PromptController.ts:19:14)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
