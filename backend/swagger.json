@@ -1,0 +1,121 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AI Learning Platform API",
+    "version": "1.0.0",
+    "description": "תיעוד API מלא הכולל משתמשים, קטגוריות ושיעורי AI."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "שרת פיתוח מקומי"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/users/register": {
+      "post": {
+        "summary": "רישום משתמש חדש",
+        "tags": ["Users"],
+        "responses": { "201": { "description": "משתמש נרשם בהצלחה" } }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "summary": "התחברות למערכת",
+        "tags": ["Users"],
+        "responses": { "200": { "description": "התחברות הצליחה" } }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "summary": "קבלת כל המשתמשים (מנהלים בלבד)",
+        "tags": ["Users"],
+        "responses": { "200": { "description": "רשימת משתמשים" } }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "summary": "קבלת משתמש לפי מזהה",
+        "tags": ["Users"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "פרטי משתמש" } }
+      }
+    },
+    "/api/categories": {
+      "get": {
+        "summary": "קבלת כל הקטגוריות",
+        "tags": ["Categories"],
+        "responses": { "200": { "description": "רשימת קטגוריות" } },
+        "post": {
+            "summary": "יצירת קטגוריה חדשה (אדמין)",
+            "tags": ["Categories"],
+            "responses": { "201": { "description": "נוצר" } }
+        }
+      }
+    },
+    "/api/subcategories": {
+      "get": {
+        "summary": "קבלת כל תתי הקטגוריות",
+        "tags": ["Sub-Categories"],
+        "responses": { "200": { "description": "רשימת תתי קטגוריות" } }
+      }
+    },
+    "/api/subcategories/{categoryName}": {
+      "get": {
+        "summary": "קבלת תתי קטגוריות לפי שם קטגוריית אם",
+        "tags": ["Sub-Categories"],
+        "parameters": [
+          { "name": "categoryName", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "הצלחה" } }
+      }
+    },
+    "/api/prompts/generate": {
+      "post": {
+        "summary": "יצירת שיעור חדש באמצעות AI",
+        "tags": ["AI Prompts"],
+        "responses": { "201": { "description": "השיעור נוצר" } }
+      }
+    },
+    "/api/prompts/my-prompts": {
+      "get": {
+        "summary": "היסטוריית הלמידה שלי",
+        "tags": ["AI Prompts"],
+        "responses": { "200": { "description": "הצלחה" } }
+      }
+    },
+    "/api/prompts/stats/{userId}": {
+      "get": {
+        "summary": "סטטיסטיקות למידה למשתמש",
+        "tags": ["AI Prompts"],
+        "parameters": [
+          { "name": "userId", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "הצלחה" } }
+      }
+    },
+    "/api/prompts/admin/all": {
+      "get": {
+        "summary": "כל הלוגים של ה-Prompts (אדמין)",
+        "tags": ["AI Prompts"],
+        "responses": { "200": { "description": "הצלחה" } }
+      }
+    }
+  }
+}
