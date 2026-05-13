@@ -31,7 +31,7 @@ export const validatePrompt = (req: Request, res: Response, next: NextFunction) 
   }
 
   const trimmedPrompt = userPrompt.trim();
-  if (trimmedPrompt.length < 5) {
+  if (trimmedPrompt.length < 2) {
     return res.status(400).json({ message: 'ההנחיה קצרה מדי, אנא פרט יותר כדי לקבל תוצאה איכותית' });
   }
 

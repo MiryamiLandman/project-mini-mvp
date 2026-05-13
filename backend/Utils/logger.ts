@@ -1,7 +1,12 @@
 import winston from 'winston';
 import path from 'path';
+import fs from 'fs';
 
 const logsDir = path.join(process.cwd(), 'logs');
+
+if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+}
 
 const getLogFileName = () => {
   const today = new Date();
