@@ -2,26 +2,30 @@ import winston from 'winston';
 import path from 'path';
 import fs from 'fs';
 
-const logsDir = path.join(process.cwd(), 'logs');
+
+const logsDir: string = path.join(process.cwd(), 'logs');
+
 
 if (!fs.existsSync(logsDir)) {
     fs.mkdirSync(logsDir, { recursive: true });
 }
 
-const getLogFileName = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
+
+const getLogFileName = (): string => {
+  const today: Date = new Date();
+  const year: number = today.getFullYear();
+  const month: string = String(today.getMonth() + 1).padStart(2, '0');
+  const day: string = String(today.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}.log`;
 };
 
-const logger = winston.createLogger({
+
+const logger: winston.Logger = winston.createLogger({
   level: 'error',
   format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.errors({ stack: true }),
-    winston.format.printf(({ timestamp, level, message, stack }) => {
+    winston.format.printf(({ timestamp, level, message, stack }: winston.Logform.TransformableInfo) => {
       return `[${timestamp}] ${level.toUpperCase()}: ${message}${stack ? '\n' + stack : ''}`;
     })
   ),
