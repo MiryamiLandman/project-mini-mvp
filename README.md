@@ -101,6 +101,12 @@ npm run dev
 * **Admin Access**: A dedicated dashboard allows viewing all users and their history.
 * **Error Handling**: Centralized middleware for systematic error management.
 
+
+## 🧪 Testing
+
+The platform includes a comprehensive test suite for the backend, including unit and integration tests.
+For detailed backend testing instructions and examples, see [backend/TESTING.md](./backend/TESTING.md).
+
 ## 📖 Example Use Case
 
 1. **Register**: User creates an account.
