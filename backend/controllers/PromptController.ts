@@ -5,7 +5,7 @@ import { AppError } from '../Utils/AppError';
 export const generateLesson = async (req: any, res: Response, next: NextFunction) => {
     try {
         const { subCategoryId, userPrompt } = req.body;
-        const userId = req.user.id; // לוקח את ה-userId מהטוקן ולא מה-body
+        const userId = req.user.id; 
         if (!subCategoryId || !userPrompt) {
             return next(new AppError('כל השדות (תת-קטגוריה והנחיה) הם חובה', 400));
         }

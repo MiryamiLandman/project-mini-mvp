@@ -139,4 +139,5 @@ async function getUserPrompts(userId: string): Promise<IPrompt[]> {
     .sort({ created_at: -1 })
     .exec();
 }
+
 export { createAIDrivenLesson, getPromptById, getAllPromptsAdmin, deletePrompt, getUserStats, getUserPrompts };
