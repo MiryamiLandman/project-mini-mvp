@@ -10,23 +10,10 @@ import categoryRoutes from './routes/CategoryRoute';
 import subCategoryRoutes from './routes/SubCategoryRoute';
 import userRoutes from './routes/UserRoute';
 import promptRoutes from './routes/PrompyRoute';
-
 const app = express();
-
-
-app.use(cors({
-  origin: 'https://project-mini-mvp-aybv.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
-  credentials: true
-}));
-
-
-app.options('*', cors());
-
+app.use(cors()); 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.json());
-
 app.use('/api/users', userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subCategoryRoutes);
@@ -50,4 +37,3 @@ const startServer = async () => {
 };
 
 startServer();
-export default app;
